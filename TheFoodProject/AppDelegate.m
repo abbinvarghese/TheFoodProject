@@ -7,6 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import "TFPManager.h"
+#import "TFPSignInViewController.h"
+#import "TFPUserLocationViewController.h"
+@import Firebase;
 
 @interface AppDelegate ()
 
@@ -16,7 +20,21 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    [FIRApp configure];
+    if ([TFPManager isFirstLaunch]) {
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        TFPSignInViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"TFPSignInViewController"];
+        self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+        self.window.rootViewController = rootViewController;
+        [self.window makeKeyAndVisible];
+    }
+    else if (![TFPManager isUserLocationSet]){
+        UIStoryboard *storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+        TFPUserLocationViewController *rootViewController = [storyboard instantiateViewControllerWithIdentifier:@"TFPUserLocationViewController"];
+        self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+        self.window.rootViewController = rootViewController;
+        [self.window makeKeyAndVisible];
+    }
     return YES;
 }
 
