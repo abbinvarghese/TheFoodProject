@@ -168,8 +168,8 @@
     ViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
     AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     [UIView transitionWithView:appDelegate.window
-                      duration:0.5
-                       options:UIViewAnimationOptionTransitionFlipFromLeft
+                      duration:0.3
+                       options:UIViewAnimationOptionTransitionCrossDissolve
                     animations:^{ appDelegate.window.rootViewController = vc;}
                     completion:nil];
 }

@@ -20,7 +20,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [_nearByTableview setContentInset:UIEdgeInsetsMake(50, 0, 0, 0)];
+    [UIView animateWithDuration:0.1 animations:^{
+        [_nearByTableview setContentInset:UIEdgeInsetsMake(50, 0, 0, 0)];
+    }];
+
 }
 
 - (void)didReceiveMemoryWarning {

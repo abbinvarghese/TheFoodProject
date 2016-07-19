@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UIImageView *cellIMageView;
 @property (nonatomic, copy) NSString *representedAssetIdentifier;
+@property (weak, nonatomic) IBOutlet UILabel *cameraLabel;
 
 -(void)selectCell:(BOOL)animated;
 -(void)deSelectCell:(BOOL)animated;

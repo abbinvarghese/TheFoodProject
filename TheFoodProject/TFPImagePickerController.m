@@ -10,6 +10,8 @@
 #import "TFPImagePickerCollectionViewCell.h"
 #import "NSIndexSet+Convenience.h"
 #import "UICollectionView+Convenience.h"
+#import "TFPAddViewControllerOne.h"
+
 @import Photos;
 
 @interface TFPImagePickerController ()<UICollectionViewDelegateFlowLayout,UICollectionViewDataSource,UICollectionViewDelegate,PHPhotoLibraryChangeObserver,UIImagePickerControllerDelegate,UINavigationControllerDelegate>
@@ -54,7 +56,9 @@ static CGSize AssetGridThumbnailSize;
         PHFetchResult *allPhotos = [PHAsset fetchAssetsWithOptions:allPhotosOptions];
         _assetsFetchResults = allPhotos;
         
-        self.imageManager = [[PHCachingImageManager alloc] init];
+        if ([PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusAuthorized) {
+            self.imageManager = [[PHCachingImageManager alloc] init];
+        }
         [self resetCachedAssets];
     }
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), ^{
@@ -63,7 +67,7 @@ static CGSize AssetGridThumbnailSize;
 }
 
 - (void)dealloc {
-    if([PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusAuthorized || PHAuthorizationStatusNotDetermined) {
+    if([PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusAuthorized || [PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusDenied) {
         [[PHPhotoLibrary sharedPhotoLibrary] unregisterChangeObserver:self];
     }
 }
@@ -96,6 +100,9 @@ static CGSize AssetGridThumbnailSize;
 }
 
 - (void)photoLibraryDidChange:(PHChange *)changeInstance {
+    if ([PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusAuthorized) {
+        self.imageManager = [[PHCachingImageManager alloc] init];
+    }
     // Check if there are changes to the assets we are showing.
     PHFetchResultChangeDetails *collectionChanges = [changeInstance changeDetailsForFetchResult:self.assetsFetchResults];
     if (collectionChanges == nil) {
@@ -152,9 +159,11 @@ static CGSize AssetGridThumbnailSize;
     if (indexPath.row == 0) {
         cell.cellIMageView.image = nil;
         cell.representedAssetIdentifier = @"";
+        cell.cameraLabel.hidden = NO;
     }
     else{
         PHAsset *asset = self.assetsFetchResults[indexPath.item-1];
+        cell.cameraLabel.hidden = YES;
         cell.representedAssetIdentifier = asset.localIdentifier;
         if ([[_selectedIndex objectAtIndex:indexPath.row] boolValue]) {
             [cell selectCell:NO];
@@ -257,15 +266,18 @@ static CGSize AssetGridThumbnailSize;
         NSArray *assetsToStartCaching = [self assetsAtIndexPaths:addedIndexPaths];
         NSArray *assetsToStopCaching = [self assetsAtIndexPaths:removedIndexPaths];
         
-        // Update the assets the PHCachingImageManager is caching.
-        [self.imageManager startCachingImagesForAssets:assetsToStartCaching
-                                            targetSize:AssetGridThumbnailSize
-                                           contentMode:PHImageContentModeAspectFill
-                                               options:nil];
-        [self.imageManager stopCachingImagesForAssets:assetsToStopCaching
-                                           targetSize:AssetGridThumbnailSize
-                                          contentMode:PHImageContentModeAspectFill
-                                              options:nil];
+
+        if ([PHPhotoLibrary authorizationStatus] == PHAuthorizationStatusAuthorized) {
+            // Update the assets the PHCachingImageManager is caching.
+            [self.imageManager startCachingImagesForAssets:assetsToStartCaching
+                                                targetSize:AssetGridThumbnailSize
+                                               contentMode:PHImageContentModeAspectFill
+                                                   options:nil];
+            [self.imageManager stopCachingImagesForAssets:assetsToStopCaching
+                                               targetSize:AssetGridThumbnailSize
+                                              contentMode:PHImageContentModeAspectFill
+                                                  options:nil];
+        }
         
         // Store the preheat rect to compare against in the future.
         self.previousPreheatRect = preheatRect;
@@ -316,6 +328,75 @@ static CGSize AssetGridThumbnailSize;
     }
     
     return assets;
+}
+
+- (IBAction)next:(id)sender {
+    if (_selectedPHResults.count>0) {
+        [_convertedImaged removeAllObjects];
+        for (PHAsset *asset in _selectedPHResults) {
+            [self.imageManager requestImageDataForAsset:asset
+                                                options:nil
+                                          resultHandler:^(NSData * _Nullable imageData,
+                                                          NSString * _Nullable dataUTI,
+                                                          UIImageOrientation orientation,
+                                                          NSDictionary * _Nullable info) {
+                                              
+                                              UIImage *image = [UIImage imageWithData:imageData];
+                                              [_convertedImaged addObject:image];
+                                              
+                                              if (_convertedImaged.count == _selectedPHResults.count) {
+                                                  [self performSegueWithIdentifier:@"TFPAddViewControllerOneSegue" sender:self];
+                                              }
+                                          }];
+        }
+    }
+}
+
+-(void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary<NSString *,id> *)info{
+    UIImage *chosenImage = info[UIImagePickerControllerOriginalImage];
+    if (_selectedPHResults.count>0) {
+        [_convertedImaged removeAllObjects];
+        for (PHAsset *asset in _selectedPHResults) {
+            [self.imageManager requestImageDataForAsset:asset
+                                                options:nil
+                                          resultHandler:^(NSData * _Nullable imageData,
+                                                          NSString * _Nullable dataUTI,
+                                                          UIImageOrientation orientation,
+                                                          NSDictionary * _Nullable info) {
+                                              
+                                              UIImage *image = [UIImage imageWithData:imageData];
+                                              
+                                              [_convertedImaged addObject:image];
+                                              
+                                              if (_convertedImaged.count == _selectedPHResults.count) {
+                                                  [_convertedImaged addObject:chosenImage];
+                                                  [picker dismissViewControllerAnimated:YES completion:^{
+                                                      [self performSegueWithIdentifier:@"TFPAddViewControllerOneSegue" sender:self];
+                                                  }];
+                                              }
+                                          }];
+        }
+    }
+    else{
+        [_convertedImaged addObject:chosenImage];
+        [picker dismissViewControllerAnimated:YES completion:^{
+            [self performSegueWithIdentifier:@"TFPAddViewControllerOneSegue" sender:self];
+        }];
+    }
+}
+
+-(void)imagePickerControllerDidCancel:(UIImagePickerController *)picker{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"TFPAddViewControllerOneSegue"]) {
+        TFPAddViewControllerOne *newView = segue.destinationViewController;
+        newView.images = _convertedImaged;
+    }
+}
+- (IBAction)dismiss:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

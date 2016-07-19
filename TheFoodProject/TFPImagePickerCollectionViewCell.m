@@ -48,6 +48,19 @@
                      }];
 }
 
+-(void)shakeCameraLabel{
+    CABasicAnimation *animation =
+    [CABasicAnimation animationWithKeyPath:@"position"];
+    [animation setDuration:0.05];
+    [animation setRepeatCount:3];
+    [animation setAutoreverses:YES];
+    [animation setFromValue:[NSValue valueWithCGPoint:
+                             CGPointMake([self.cameraLabel center].x - 5.0f, [self.cameraLabel center].y)]];
+    [animation setToValue:[NSValue valueWithCGPoint:
+                           CGPointMake([self.cameraLabel center].x + 5.0f, [self.cameraLabel center].y)]];
+    [[self.cameraLabel layer] addAnimation:animation forKey:@"position"];
+}
+
 -(void)shakeCell{
     CABasicAnimation *animation =
     [CABasicAnimation animationWithKeyPath:@"position"];
