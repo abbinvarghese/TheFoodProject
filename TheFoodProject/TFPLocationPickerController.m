@@ -72,9 +72,7 @@
     NSURLSessionConfiguration *configuration = [NSURLSessionConfiguration defaultSessionConfiguration];
     AFURLSessionManager *manager = [[AFURLSessionManager alloc] initWithSessionConfiguration:configuration];
     _dataTask = [manager dataTaskWithRequest:request completionHandler:^(NSURLResponse *response, id responseObject, NSError *error) {
-        if (error) {
-            NSLog(@"Error: %@", error);
-        } else {
+        if (!error) {
             _placesArray = [responseObject objectForKey:@"predictions"];
             [_placesTableview reloadData];
         }

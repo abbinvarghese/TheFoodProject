@@ -8,6 +8,9 @@
 
 #import "TFPSignInViewController.h"
 #import <AVFoundation/AVFoundation.h>
+#import "TFPManager.h"
+#import "TFPConstants.h"
+@import Firebase;
 
 @interface TFPSignInViewController ()
 
@@ -82,15 +85,32 @@
     [self.avplayer play];
 }
 
+- (IBAction)signINLater:(UIButton *)sender {
+    if ([FIRAuth auth].currentUser == nil) {
+        self.view.userInteractionEnabled = NO;
+        [[FIRAuth auth]
+         signInAnonymouslyWithCompletion:^(FIRUser *_Nullable user, NSError *_Nullable error) {
+             self.view.userInteractionEnabled = YES;
+             if (error == nil) {
+                 FIRDatabaseReference *ref = [[FIRDatabase database] reference];
+                 NSDictionary *post = @{kTFPUserIDKey: user.uid,
+                                        kTFPUserIsAnonymousKey:[NSNumber numberWithBool:user.isAnonymous]};
+                 NSDictionary *childUpdates = @{[@"/users/" stringByAppendingString:user.uid]: post};
+                 [ref updateChildValues:childUpdates];
+                 if (![TFPManager isUserLocationSet]) {
+                     [self performSegueWithIdentifier:@"TFPUserLocationViewControllerSegue" sender:self];
+                 }
+                 else{
+                     [self dismissViewControllerAnimated:YES completion:nil];
+                 }
+                 
+             }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+         }];
+    }
+    else{
+        
+    }
 }
-*/
 
 @end

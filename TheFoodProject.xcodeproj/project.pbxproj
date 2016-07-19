@@ -8,6 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		A2642FBAF09C929BE5FDCD2F /* libPods-TheFoodProject.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C9043BD1FE53DEF1D3295ADD /* libPods-TheFoodProject.a */; };
+		ED3BC74D1D3CF886000B30B9 /* TFPNearByViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3BC74C1D3CF886000B30B9 /* TFPNearByViewController.m */; };
+		ED3BC7501D3CF896000B30B9 /* TFPFavViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3BC74F1D3CF896000B30B9 /* TFPFavViewController.m */; };
+		ED3BC7531D3CF8B0000B30B9 /* TFPSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3BC7521D3CF8B0000B30B9 /* TFPSettingsViewController.m */; };
+		ED3BC7551D3D196E000B30B9 /* Screen Shot 2016-07-18 at 7.34.05 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = ED3BC7541D3D196E000B30B9 /* Screen Shot 2016-07-18 at 7.34.05 PM.png */; };
+		ED3BC7571D3D1C50000B30B9 /* Screen Shot 2016-07-18 at 7.46.34 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = ED3BC7561D3D1C50000B30B9 /* Screen Shot 2016-07-18 at 7.46.34 PM.png */; };
+		ED3BC75A1D3D1D02000B30B9 /* TFPNearByTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = ED3BC7591D3D1D02000B30B9 /* TFPNearByTableViewCell.m */; };
 		ED5DF9D41D3AC17700450D4F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5DF9D31D3AC17700450D4F /* main.m */; };
 		ED5DF9D71D3AC17700450D4F /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5DF9D61D3AC17700450D4F /* AppDelegate.m */; };
 		ED5DF9DA1D3AC17700450D4F /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5DF9D91D3AC17700450D4F /* ViewController.m */; };
@@ -22,11 +28,25 @@
 		ED5DF9F81D3AC39800450D4F /* IMG_0102.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = ED5DF9F71D3AC39800450D4F /* IMG_0102.mp4 */; };
 		ED5DF9FB1D3AC90600450D4F /* TFPLocationPickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5DF9FA1D3AC90600450D4F /* TFPLocationPickerController.m */; };
 		ED5DF9FE1D3AD0CF00450D4F /* NSDictionary+PMPlace.m in Sources */ = {isa = PBXBuildFile; fileRef = ED5DF9FD1D3AD0CF00450D4F /* NSDictionary+PMPlace.m */; };
+		EDC911471D3E1C67002F8C91 /* TFPImagePickerController.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC911461D3E1C67002F8C91 /* TFPImagePickerController.m */; };
+		EDC9114A1D3E1C97002F8C91 /* TFPImagePickerCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC911491D3E1C97002F8C91 /* TFPImagePickerCollectionViewCell.m */; };
+		EDC9114F1D3E20B7002F8C91 /* NSIndexSet+Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC9114C1D3E20B7002F8C91 /* NSIndexSet+Convenience.m */; };
+		EDC911501D3E20B7002F8C91 /* UICollectionView+Convenience.m in Sources */ = {isa = PBXBuildFile; fileRef = EDC9114E1D3E20B7002F8C91 /* UICollectionView+Convenience.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		C9043BD1FE53DEF1D3295ADD /* libPods-TheFoodProject.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-TheFoodProject.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8AF4849D263B58807FE4941 /* Pods-TheFoodProject.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheFoodProject.release.xcconfig"; path = "Pods/Target Support Files/Pods-TheFoodProject/Pods-TheFoodProject.release.xcconfig"; sourceTree = "<group>"; };
+		ED3BC74B1D3CF886000B30B9 /* TFPNearByViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFPNearByViewController.h; sourceTree = "<group>"; };
+		ED3BC74C1D3CF886000B30B9 /* TFPNearByViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFPNearByViewController.m; sourceTree = "<group>"; };
+		ED3BC74E1D3CF896000B30B9 /* TFPFavViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFPFavViewController.h; sourceTree = "<group>"; };
+		ED3BC74F1D3CF896000B30B9 /* TFPFavViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFPFavViewController.m; sourceTree = "<group>"; };
+		ED3BC7511D3CF8B0000B30B9 /* TFPSettingsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFPSettingsViewController.h; sourceTree = "<group>"; };
+		ED3BC7521D3CF8B0000B30B9 /* TFPSettingsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFPSettingsViewController.m; sourceTree = "<group>"; };
+		ED3BC7541D3D196E000B30B9 /* Screen Shot 2016-07-18 at 7.34.05 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2016-07-18 at 7.34.05 PM.png"; sourceTree = "<group>"; };
+		ED3BC7561D3D1C50000B30B9 /* Screen Shot 2016-07-18 at 7.46.34 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2016-07-18 at 7.46.34 PM.png"; sourceTree = "<group>"; };
+		ED3BC7581D3D1D02000B30B9 /* TFPNearByTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFPNearByTableViewCell.h; sourceTree = "<group>"; };
+		ED3BC7591D3D1D02000B30B9 /* TFPNearByTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFPNearByTableViewCell.m; sourceTree = "<group>"; };
 		ED5DF9CF1D3AC17700450D4F /* TheFoodProject.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TheFoodProject.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED5DF9D31D3AC17700450D4F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		ED5DF9D51D3AC17700450D4F /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -51,6 +71,14 @@
 		ED5DF9FA1D3AC90600450D4F /* TFPLocationPickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFPLocationPickerController.m; sourceTree = "<group>"; };
 		ED5DF9FC1D3AD0CF00450D4F /* NSDictionary+PMPlace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+PMPlace.h"; sourceTree = "<group>"; };
 		ED5DF9FD1D3AD0CF00450D4F /* NSDictionary+PMPlace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+PMPlace.m"; sourceTree = "<group>"; };
+		EDC911451D3E1C67002F8C91 /* TFPImagePickerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFPImagePickerController.h; sourceTree = "<group>"; };
+		EDC911461D3E1C67002F8C91 /* TFPImagePickerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFPImagePickerController.m; sourceTree = "<group>"; };
+		EDC911481D3E1C97002F8C91 /* TFPImagePickerCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TFPImagePickerCollectionViewCell.h; sourceTree = "<group>"; };
+		EDC911491D3E1C97002F8C91 /* TFPImagePickerCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TFPImagePickerCollectionViewCell.m; sourceTree = "<group>"; };
+		EDC9114B1D3E20B7002F8C91 /* NSIndexSet+Convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSIndexSet+Convenience.h"; sourceTree = "<group>"; };
+		EDC9114C1D3E20B7002F8C91 /* NSIndexSet+Convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSIndexSet+Convenience.m"; sourceTree = "<group>"; };
+		EDC9114D1D3E20B7002F8C91 /* UICollectionView+Convenience.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UICollectionView+Convenience.h"; sourceTree = "<group>"; };
+		EDC9114E1D3E20B7002F8C91 /* UICollectionView+Convenience.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UICollectionView+Convenience.m"; sourceTree = "<group>"; };
 		F1E546AC2DDE0CBFE1096EC2 /* Pods-TheFoodProject.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TheFoodProject.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TheFoodProject/Pods-TheFoodProject.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -120,7 +148,25 @@
 				ED5DF9FA1D3AC90600450D4F /* TFPLocationPickerController.m */,
 				ED5DF9FC1D3AD0CF00450D4F /* NSDictionary+PMPlace.h */,
 				ED5DF9FD1D3AD0CF00450D4F /* NSDictionary+PMPlace.m */,
+				ED3BC74B1D3CF886000B30B9 /* TFPNearByViewController.h */,
+				ED3BC74C1D3CF886000B30B9 /* TFPNearByViewController.m */,
+				ED3BC7581D3D1D02000B30B9 /* TFPNearByTableViewCell.h */,
+				ED3BC7591D3D1D02000B30B9 /* TFPNearByTableViewCell.m */,
+				ED3BC74E1D3CF896000B30B9 /* TFPFavViewController.h */,
+				ED3BC74F1D3CF896000B30B9 /* TFPFavViewController.m */,
+				ED3BC7511D3CF8B0000B30B9 /* TFPSettingsViewController.h */,
+				ED3BC7521D3CF8B0000B30B9 /* TFPSettingsViewController.m */,
+				EDC911451D3E1C67002F8C91 /* TFPImagePickerController.h */,
+				EDC911461D3E1C67002F8C91 /* TFPImagePickerController.m */,
+				EDC911481D3E1C97002F8C91 /* TFPImagePickerCollectionViewCell.h */,
+				EDC911491D3E1C97002F8C91 /* TFPImagePickerCollectionViewCell.m */,
+				EDC9114B1D3E20B7002F8C91 /* NSIndexSet+Convenience.h */,
+				EDC9114C1D3E20B7002F8C91 /* NSIndexSet+Convenience.m */,
+				EDC9114D1D3E20B7002F8C91 /* UICollectionView+Convenience.h */,
+				EDC9114E1D3E20B7002F8C91 /* UICollectionView+Convenience.m */,
 				ED5DF9DB1D3AC17700450D4F /* Main.storyboard */,
+				ED3BC7541D3D196E000B30B9 /* Screen Shot 2016-07-18 at 7.34.05 PM.png */,
+				ED3BC7561D3D1C50000B30B9 /* Screen Shot 2016-07-18 at 7.46.34 PM.png */,
 				ED5DF9DE1D3AC17700450D4F /* Assets.xcassets */,
 				ED5DF9E01D3AC17700450D4F /* LaunchScreen.storyboard */,
 				ED5DF9F71D3AC39800450D4F /* IMG_0102.mp4 */,
@@ -203,6 +249,8 @@
 				ED5DF9E21D3AC17700450D4F /* LaunchScreen.storyboard in Resources */,
 				ED5DF9EA1D3AC1ED00450D4F /* GoogleService-Info.plist in Resources */,
 				ED5DF9DF1D3AC17700450D4F /* Assets.xcassets in Resources */,
+				ED3BC7551D3D196E000B30B9 /* Screen Shot 2016-07-18 at 7.34.05 PM.png in Resources */,
+				ED3BC7571D3D1C50000B30B9 /* Screen Shot 2016-07-18 at 7.46.34 PM.png in Resources */,
 				ED5DF9F81D3AC39800450D4F /* IMG_0102.mp4 in Resources */,
 				ED5DF9DD1D3AC17700450D4F /* Main.storyboard in Resources */,
 			);
@@ -263,14 +311,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EDC9114F1D3E20B7002F8C91 /* NSIndexSet+Convenience.m in Sources */,
 				ED5DF9ED1D3AC23F00450D4F /* TFPManager.m in Sources */,
 				ED5DF9F31D3AC29F00450D4F /* TFPSignInViewController.m in Sources */,
 				ED5DF9DA1D3AC17700450D4F /* ViewController.m in Sources */,
 				ED5DF9F61D3AC2C100450D4F /* TFPUserLocationViewController.m in Sources */,
+				ED3BC75A1D3D1D02000B30B9 /* TFPNearByTableViewCell.m in Sources */,
+				ED3BC7531D3CF8B0000B30B9 /* TFPSettingsViewController.m in Sources */,
+				ED3BC74D1D3CF886000B30B9 /* TFPNearByViewController.m in Sources */,
+				ED3BC7501D3CF896000B30B9 /* TFPFavViewController.m in Sources */,
 				ED5DF9D71D3AC17700450D4F /* AppDelegate.m in Sources */,
 				ED5DF9FB1D3AC90600450D4F /* TFPLocationPickerController.m in Sources */,
+				EDC911501D3E20B7002F8C91 /* UICollectionView+Convenience.m in Sources */,
 				ED5DF9F01D3AC26000450D4F /* TFPConstants.m in Sources */,
 				ED5DF9D41D3AC17700450D4F /* main.m in Sources */,
+				EDC911471D3E1C67002F8C91 /* TFPImagePickerController.m in Sources */,
+				EDC9114A1D3E1C97002F8C91 /* TFPImagePickerCollectionViewCell.m in Sources */,
 				ED5DF9FE1D3AD0CF00450D4F /* NSDictionary+PMPlace.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

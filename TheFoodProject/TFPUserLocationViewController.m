@@ -12,6 +12,8 @@
 #import "AFNetworking.h"
 #import "NSDictionary+PMPlace.h"
 #import "TFPConstants.h"
+#import "ViewController.h"
+#import "AppDelegate.h"
 @import CoreLocation;
 
 @interface TFPUserLocationViewController ()<TFPLocationPickerControllerDelegate,CLLocationManagerDelegate>
@@ -28,6 +30,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     //Not affecting background music playing
     NSError *sessionError = nil;
     [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryAmbient error:&sessionError];
@@ -98,7 +101,11 @@
 }
 
 -(void)TFPLocationPickerControllerFinishedWithPlace:(NSMutableDictionary *)place{
-    NSLog(@"%@",place);
+    NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+    [defaults setObject:place forKey:kTFPUserLocationKey];
+    [defaults setBool:YES forKey:kTFPFirstLaunchKey];
+    [defaults synchronize];
+    [self switchRootView];
 }
 
 - (IBAction)detectLocation:(UIButton *)sender {
@@ -142,7 +149,11 @@
                         NSLog(@"Error: %@", error);
                     } else {
                         NSMutableDictionary *place = [[NSMutableDictionary alloc]initWithPlace:responseObject[@"result"]];
-                        NSLog(@"%@", place);
+                        NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+                        [defaults setObject:place forKey:kTFPUserLocationKey];
+                        [defaults setBool:YES forKey:kTFPFirstLaunchKey];
+                        [defaults synchronize];
+                        [self switchRootView];
                     }
                 }];
                 [dataTask resume];
@@ -153,6 +164,15 @@
     }
 }
 
+-(void)switchRootView{
+    ViewController *vc = [self.storyboard instantiateViewControllerWithIdentifier:@"ViewController"];
+    AppDelegate *appDelegate = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    [UIView transitionWithView:appDelegate.window
+                      duration:0.5
+                       options:UIViewAnimationOptionTransitionFlipFromLeft
+                    animations:^{ appDelegate.window.rootViewController = vc;}
+                    completion:nil];
+}
 
 
 @end
