@@ -666,13 +666,14 @@ PRICE</string>
                                             <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="price of the item" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="l1S-0j-O9n">
                                                 <rect key="frame" x="30" y="217" width="325" height="50"/>
                                                 <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="15"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="numbersAndPunctuation"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="UsN-8T-f4T" id="J6i-J6-5jt"/>
                                                 </connections>
                                             </textField>
                                         </subviews>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstItem="sAB-k5-R0A" firstAttribute="top" secondItem="cWi-ow-Rk7" secondAttribute="bottom" constant="20" id="10d-sm-64F"/>
                                             <constraint firstItem="sAB-k5-R0A" firstAttribute="trailing" secondItem="l1S-0j-O9n" secondAttribute="trailing" id="1Pc-aF-qVj"/>
@@ -698,8 +699,12 @@ PRICE</string>
                                             <constraint firstItem="cWi-ow-Rk7" firstAttribute="trailing" secondItem="l1S-0j-O9n" secondAttribute="trailing" id="taa-vv-IdA"/>
                                             <constraint firstItem="ubo-tn-sSA" firstAttribute="top" secondItem="abh-QF-uLv" secondAttribute="bottom" id="xP0-8x-TOZ"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="IO6-Ej-eW1" appends="YES" id="ufb-KR-dzH"/>
+                                        </connections>
                                     </view>
                                 </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="0yw-DW-amE" firstAttribute="top" secondItem="ZcF-Zz-dID" secondAttribute="top" id="R4k-TD-ClX"/>
                                     <constraint firstItem="0yw-DW-amE" firstAttribute="leading" secondItem="ZcF-Zz-dID" secondAttribute="leading" id="UdX-pQ-0Zu"/>
@@ -724,7 +729,7 @@ PRICE</string>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="Lez-qW-cSL" firstAttribute="top" secondItem="UGM-V3-WsS" secondAttribute="top" id="0Ng-VU-klH"/>
                             <constraint firstItem="ZcF-Zz-dID" firstAttribute="top" secondItem="UGM-V3-WsS" secondAttribute="top" id="AdA-gA-uCv"/>
@@ -745,6 +750,11 @@ PRICE</string>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4XY-fu-0F7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="IO6-Ej-eW1">
+                    <connections>
+                        <action selector="resignFirstResponder:" destination="UsN-8T-f4T" id="VNm-RB-n6Y"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="3237.5" y="-400.5"/>
         </scene>

@@ -165,10 +165,14 @@ static CGSize AssetGridThumbnailSize;
         PHAsset *asset = self.assetsFetchResults[indexPath.item-1];
         cell.cameraLabel.hidden = YES;
         cell.representedAssetIdentifier = asset.localIdentifier;
-        if ([[_selectedIndex objectAtIndex:indexPath.row] boolValue]) {
-            [cell selectCell:NO];
-        }
-        else{
+        @try {
+            if ([[_selectedIndex objectAtIndex:indexPath.row] boolValue]) {
+                [cell selectCell:NO];
+            }
+            else{
+                [cell deSelectCell:NO];
+            }
+        } @catch (NSException *exception) {
             [cell deSelectCell:NO];
         }
         [self.imageManager requestImageForAsset:asset
