@@ -650,7 +650,7 @@ PRICE</string>
                                                 <rect key="frame" x="25" y="288" width="330" height="150"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="0.24854567307692307" colorSpace="calibratedRGB"/>
-                                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="14"/>
+                                                <fontDescription key="fontDescription" name="GillSans" family="Gill Sans" pointSize="15"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="UsN-8T-f4T" id="Tr2-XH-jQL"/>
